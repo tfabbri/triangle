@@ -1,0 +1,150 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Quality meshing: angle and size constraints &mdash; triangle 2012.07.04 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2012.07.04',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="triangle 2012.07.04 documentation" href="index.html" />
+    <link rel="next" title="Refining preexisting meshes" href="refine.html" />
+    <link rel="prev" title="Generating Delaunay triangulations" href="delaunay.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="refine.html" title="Refining preexisting meshes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="delaunay.html" title="Generating Delaunay triangulations"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">triangle 2012.07.04 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="quality-meshing-angle-and-size-constraints">
+<h1>Quality meshing: angle and size constraints<a class="headerlink" href="#quality-meshing-angle-and-size-constraints" title="Permalink to this headline">¶</a></h1>
+<p>Triangle generates a conforming constrained Delaunay triangulation whenever the
+-q, -a, or -u, switch is used. These switches set constraints on angles and
+triangle sizes in the mesh.</p>
+<p>The -q switch sets a minimum angle constraint. A number may follow the <cite>q</cite>;
+otherwise, the default minimum angle is twenty degrees. For the vertex set
+spiral below, consider the differences among triangle spiral triangle -q spiral
+triangle -q32.5 spiral</p>
+<p>(<a class="reference external" href="./plot/quality.py">Source code</a>, <a class="reference external" href="./plot/quality.png">png</a>, <a class="reference external" href="./plot/quality.hires.png">hires.png</a>, <a class="reference external" href="./plot/quality.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/quality.png" src="_images/quality.png" />
+</div>
+<p>Note that the angle constraint does not apply to small angles between input
+segments; such angles cannot be removed.</p>
+<p>The -a switch sets a maximum area constraint. There are three ways to use this
+switch. The first way is to specify a maximum area on the command line. The
+next example is a mesh in which no triangle has area greater than 0.2.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">triangulate</span><span class="p">(</span><span class="n">spiral</span><span class="p">,</span><span class="s">&#39;a.2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./plot/quality1.py">Source code</a>, <a class="reference external" href="./plot/quality1.png">png</a>, <a class="reference external" href="./plot/quality1.hires.png">hires.png</a>, <a class="reference external" href="./plot/quality1.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/quality1.png" src="_images/quality1.png" />
+</div>
+<p>The second manner of using the -a switch is applicable only when creating a new
+mesh from a PSLG. The file describing the PSLG itself contains area
+constraints, each of which is applied to a segment-bounded region; see the
+.poly file format for details. For an example, look at the last seven lines of
+la.poly, which describes a vertical cross section of soil in the Los Angeles
+Basin. Below is an illustration of the results when the -a switch is or is not
+invoked.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">triangulate</span><span class="p">(</span><span class="n">la</span><span class="p">,</span><span class="s">&#39;pq&#39;</span><span class="p">)</span>
+<span class="n">triangulate</span><span class="p">(</span><span class="n">la</span><span class="p">,</span><span class="s">&#39;pqa&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./plot/quality2.py">Source code</a>, <a class="reference external" href="./plot/quality2.png">png</a>, <a class="reference external" href="./plot/quality2.hires.png">hires.png</a>, <a class="reference external" href="./plot/quality2.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/quality2.png" src="_images/quality2.png" />
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="delaunay.html"
+                        title="previous chapter">Generating Delaunay triangulations</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="refine.html"
+                        title="next chapter">Refining preexisting meshes</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/quality.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="refine.html" title="Refining preexisting meshes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="delaunay.html" title="Generating Delaunay triangulations"
+             >previous</a> |</li>
+        <li><a href="index.html">triangle 2012.07.04 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Triangle Authors, Dzhelil Rufat.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to python triangle’s documentation! &mdash; triangle 2012.07.04 documentation</title>
+    <title>Python Triangle &mdash; triangle 2012.07.04 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,7 +25,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="triangle 2012.07.04 documentation" href="#" /> 
+    <link rel="top" title="triangle 2012.07.04 documentation" href="#" />
+    <link rel="next" title="Installation" href="installing.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,6 +35,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="installing.html" title="Installation"
+             accesskey="N">next</a> |</li>
         <li><a href="#">triangle 2012.07.04 documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -43,91 +47,117 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="welcome-to-python-triangle-s-documentation">
-<h1>Welcome to python triangle&#8217;s documentation!<a class="headerlink" href="#welcome-to-python-triangle-s-documentation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="python-triangle">
+<h1>Python Triangle<a class="headerlink" href="#python-triangle" title="Permalink to this headline">¶</a></h1>
+<p><em>Python Triangle</em> is a python wrapper around Jonathan Richard Shewchuk&#8217;s
+two-dimensional quality mesh generator and delaunay triangulator library,
+available <a class="reference external" href="http://www.cs.cmu.edu/~quake/triangle.html">here</a>.</p>
 <div class="toctree-wrapper compound">
-<ul class="simple">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definitions.html">Definitions (of several geometric terms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="delaunay.html">Generating Delaunay triangulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quality.html">Quality meshing: angle and size constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refine.html">Refining preexisting meshes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convex.html">Convex hulls and mesh boundaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="voronoi.html">Voronoi diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Simple Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data Objects</a></li>
 </ul>
-</div>
-<p><strong>Triangle</strong> is a python wrapper around Jonathan Richard Shewchuk&#8217;s two-dimensional quality mesh generator
-and delaunay triangulator, that is available <a class="reference external" href="http://www.cs.cmu.edu/~quake/triangle.html">here</a> .</p>
-</div>
-<div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>To install simply run:</p>
-<div class="highlight-python"><pre>easy_install triangle</pre>
-</div>
-<p>or build from source:</p>
-<div class="highlight-python"><pre>git clone https://github.com/drufat/triangle.git
-cd triangle
-python setup.py install</pre>
 </div>
 </div>
 <div class="section" id="api">
 <h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
-<p>So far the module only consists of a single function</p>
 <dl class="function">
-<dt id="triangle.triangulate">
-<tt class="descclassname">triangle.</tt><tt class="descname">triangulate</tt><big>(</big><em>pts</em>, <em>maxarea=None</em>, <em>minangle=None</em><big>)</big><a class="headerlink" href="#triangle.triangulate" title="Permalink to this definition">¶</a></dt>
-<dd><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pts</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">triangulate</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span> 
-<span class="go">(array([[ 0.,  0.],</span>
-<span class="go">       [ 0.,  1.],</span>
-<span class="go">       [ 1.,  1.],</span>
-<span class="go">       [ 1.,  0.]]),</span>
-<span class="go"> array([[1, 0, 3],</span>
-<span class="go">       [3, 2, 1]], dtype=int32))</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</div>
-<div class="section" id="examples">
-<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
-<p>Let us triangulate a simple square</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">pts</span> <span class="o">=</span> <span class="n">array</span><span class="p">(((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
-<span class="n">triangulate</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span>
+<dt id="triangle.convex_hull">
+<tt class="descclassname">triangle.</tt><tt class="descname">convex_hull</tt><big>(</big><em>pts</em><big>)</big><a class="headerlink" href="#triangle.convex_hull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the convex hull enclosing <cite>pts</cite>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pts</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">segments</span> <span class="o">=</span> <span class="n">convex_hull</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href=".//index-1.py">Source code</a>, <a class="reference external" href=".//index-1.png">png</a>, <a class="reference external" href=".//index-1.hires.png">hires.png</a>, <a class="reference external" href=".//index-1.pdf">pdf</a>)</p>
 <div class="figure">
 <img alt="_images/index-1.png" src="_images/index-1.png" />
 </div>
-<p>In order to set maximum area of the triangles, we set the <em>maxarea</em> keyword</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">triangulate</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">maxarea</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</dd></dl>
+
+<dl class="function">
+<dt id="triangle.delaunay">
+<tt class="descclassname">triangle.</tt><tt class="descname">delaunay</tt><big>(</big><em>pts</em><big>)</big><a class="headerlink" href="#triangle.delaunay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the delaunay triangulation of points <cite>pts</cite>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pts</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tri</span> <span class="o">=</span> <span class="n">delaunay</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="triangle.voronoi">
+<tt class="descclassname">triangle.</tt><tt class="descname">voronoi</tt><big>(</big><em>pts</em><big>)</big><a class="headerlink" href="#triangle.voronoi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the vornoi diagram <cite>pts</cite>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pts</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">points</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">ray_origin</span><span class="p">,</span> <span class="n">ray_direct</span> <span class="o">=</span> <span class="n">vornoi</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href=".//index-2.py">Source code</a>, <a class="reference external" href=".//index-2.png">png</a>, <a class="reference external" href=".//index-2.hires.png">hires.png</a>, <a class="reference external" href=".//index-2.pdf">pdf</a>)</p>
 <div class="figure">
 <img alt="_images/index-2.png" src="_images/index-2.png" />
 </div>
-<p>If we want to  decrease the area even further</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">triangualte</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">maxarea</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>(<a class="reference external" href=".//index-3.py">Source code</a>, <a class="reference external" href=".//index-3.png">png</a>, <a class="reference external" href=".//index-3.hires.png">hires.png</a>, <a class="reference external" href=".//index-3.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="_images/index-3.png" src="_images/index-3.png" />
-</div>
-<p>To do the same with a circle</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+</dd></dl>
 
-<span class="n">theta</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mi">33</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">pts</span> <span class="o">=</span> <span class="n">vstack</span><span class="p">((</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span><span class="o">.</span><span class="n">T</span>
-<span class="n">triangulate</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>(<a class="reference external" href=".//index-4.py">Source code</a>, <a class="reference external" href=".//index-4.png">png</a>, <a class="reference external" href=".//index-4.hires.png">hires.png</a>, <a class="reference external" href=".//index-4.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="_images/index-4.png" src="_images/index-4.png" />
-</div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">triangulate</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">maxarea</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>(<a class="reference external" href=".//index-5.py">Source code</a>, <a class="reference external" href=".//index-5.png">png</a>, <a class="reference external" href=".//index-5.hires.png">hires.png</a>, <a class="reference external" href=".//index-5.pdf">pdf</a>)</p>
-<div class="figure">
-<img alt="_images/index-5.png" src="_images/index-5.png" />
-</div>
+<dl class="function">
+<dt id="triangle.triangulate">
+<tt class="descclassname">triangle.</tt><tt class="descname">triangulate</tt><big>(</big><em>tri</em>, <em>opts=''</em><big>)</big><a class="headerlink" href="#triangle.triangulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform triangulation on the input data <cite>tri</cite>. <cite>tri</cite> must be a dictionary
+that contains the following keys:</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>vertices</cite> - 2-D array that stores the xy position of each vertex</li>
+<li><cite>segments</cite> - optional 2-D array that stores segments. Segments are edges whose presence in the triangulation is enforced (although each segment may be subdivided into smaller edges). Each segment is specified by listing the indices of its two endpoints.</li>
+<li><cite>holes</cite> - optional 2-D array that stores holes. Holes are specified by identifying a point inside each hole. After the triangulation is formed, Triangle creates holes by eating triangles, spreading out from each hole point until its progress is blocked by PSLG segments; you must be careful to enclose each hole in segments, or your whole triangulation might be eaten away. If the two triangles abutting a segment are eaten, the segment itself is also eaten. Do not place a hole directly on a segment; if you do, Triangle will choose one side of the segment arbitrarily.</li>
+<li><cite>regions</cite> - optional 2-D array that stores region attributes and areas.</li>
+</ul>
+</div></blockquote>
+<p>The second (optional) arguments lists the options that should be passed to triangle.</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>p</cite> - Triangulates a Planar Straight Line Graph.</li>
+<li><cite>r</cite> - Refines a previously generated mesh.</li>
+<li><cite>q</cite> - Quality mesh generation with no angles smaller than 20 degrees. An alternate minimum angle may be specified after the <cite>q</cite>.</li>
+<li><cite>a</cite> - Imposes a maximum triangle area constraint. A fixed area constraint (that applies to every triangle) may be specified after the <cite>a</cite>, or varying areas may be read from the input dictionary.</li>
+<li><cite>c</cite> - Encloses the convex hull with segments.</li>
+<li><cite>D</cite> - Conforming Delaunay: use this switch if you want all triangles in the mesh to be Delaunay, and not just constrained Delaunay; or if you want to ensure that all Voronoi vertices lie within the triangulation.</li>
+<li><cite>X</cite> - Suppresses exact arithmetic.</li>
+<li><cite>S</cite> - Specifies the maximum number of added Steiner points.</li>
+<li><cite>i</cite> - Uses the incremental algorithm for Delaunay triangulation, rather than the divide-and-conquer algorithm.</li>
+<li><cite>F</cite> - Uses Steven Fortune&#8217;s sweepline algorithm for Delaunay triangulation, rather than the divide-and-conquer algorithm.</li>
+<li><cite>l</cite> - Uses only vertical cuts in the divide-and-conquer algorithm. By default, Triangle uses alternating vertical and horizontal cuts, which usually improve the speed except with vertex sets that are small or short and wide. This switch is primarily of theoretical interest.</li>
+<li><cite>s</cite> - Specifies that segments should be forced into the triangulation by recursively splitting them at their midpoints, rather than by generating a constrained Delaunay triangulation. Segment splitting is true to Ruppert&#8217;s original algorithm, but can create needlessly small triangles. This switch is primarily of theoretical interest.</li>
+<li><cite>C</cite> - Check the consistency of the final mesh. Uses exact arithmetic for checking, even if the -X switch is used. Useful if you suspect Triangle is buggy.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="triangle.loads">
+<tt class="descclassname">triangle.</tt><tt class="descname">loads</tt><big>(</big><em>node=None</em>, <em>ele=None</em>, <em>poly=None</em>, <em>area=None</em>, <em>edge=None</em>, <em>neigh=None</em><big>)</big><a class="headerlink" href="#triangle.loads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a dictionary representing the triangle data from strings.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="triangle.load">
+<tt class="descclassname">triangle.</tt><tt class="descname">load</tt><big>(</big><em>directory</em>, <em>name</em><big>)</big><a class="headerlink" href="#triangle.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a dictionary representing the triangle data from <cite>directory</cite> and <cite>name</cite>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="triangle.get_data">
+<tt class="descclassname">triangle.</tt><tt class="descname">get_data</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#triangle.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load data samples provided with the module. 
+Examples: A, dots, ell, face, ...</p>
+</dd></dl>
+
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
@@ -146,15 +176,16 @@ python setup.py install</pre>
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Welcome to python triangle&#8217;s documentation!</a><ul>
+<li><a class="reference internal" href="#">Python Triangle</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#api">API</a></li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
+  <h4>Next topic</h4>
+  <p class="topless"><a href="installing.html"
+                        title="next chapter">Installation</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"
@@ -183,12 +214,15 @@ python setup.py install</pre>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="installing.html" title="Installation"
+             >next</a> |</li>
         <li><a href="#">triangle 2012.07.04 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012, Dzhelil Rufat.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        &copy; Copyright 2012, Triangle Authors, Dzhelil Rufat.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>
