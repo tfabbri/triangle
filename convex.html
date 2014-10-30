@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Convex hulls and mesh boundaries &mdash; triangle 2013.01.07 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2013.01.07',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="triangle 2013.01.07 documentation" href="index.html" />
+    <link rel="next" title="Voronoi diagrams" href="voronoi.html" />
+    <link rel="prev" title="Refining preexisting meshes" href="refine.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="voronoi.html" title="Voronoi diagrams"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="refine.html" title="Refining preexisting meshes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">triangle 2013.01.07 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="convex-hulls-and-mesh-boundaries">
+<h1>Convex hulls and mesh boundaries<a class="headerlink" href="#convex-hulls-and-mesh-boundaries" title="Permalink to this headline">¶</a></h1>
+<p>If the input is a vertex set (rather than a PSLG), Triangle produces its convex
+hull as a by-product in the output&#8217;s segments if you use the -c switch. There
+are faster algorithms for finding a two-dimensional convex hull than
+triangulation, of course, but this one comes for free. In the example below,
+the data <cite>dots</cite> is read, and its convex hull produced in <cite>dots.1</cite>.</p>
+<p>(<a class="reference external" href="./plot/convex_hull.py">Source code</a>, <a class="reference external" href="./plot/convex_hull.png">png</a>, <a class="reference external" href="./plot/convex_hull.hires.png">hires.png</a>, <a class="reference external" href="./plot/convex_hull.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/convex_hull.png" src="_images/convex_hull.png" />
+</div>
+<p>If the input is an unconstrained mesh (you are using the -r switch but not the
+-p switch), Triangle produces a list of its boundary edges (including hole
+boundaries) as a by-product when you use the -c switch. If you also use the -p
+switch, the output will contain all the segments from the input as well. For
+example, consider the mesh described by <cite>face.1</cite>.</p>
+<p>(<a class="reference external" href=".//convex-1.py">Source code</a>, <a class="reference external" href=".//convex-1.png">png</a>, <a class="reference external" href=".//convex-1.hires.png">hires.png</a>, <a class="reference external" href=".//convex-1.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/convex-1.png" src="_images/convex-1.png" />
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">triangulate</span><span class="p">(</span><span class="n">get_data</span><span class="p">(</span><span class="s">&#39;face.1&#39;</span><span class="p">),</span> <span class="s">&#39;rc&#39;</span><span class="p">)</span>
+<span class="n">triangulate</span><span class="p">(</span><span class="n">get_data</span><span class="p">(</span><span class="s">&#39;face.1&#39;</span><span class="p">),</span> <span class="s">&#39;rpc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In each case, the boundary segments can be found in face.2.poly.</p>
+<p>(<a class="reference external" href="./plot/bndries.py">Source code</a>, <a class="reference external" href="./plot/bndries.png">png</a>, <a class="reference external" href="./plot/bndries.hires.png">hires.png</a>, <a class="reference external" href="./plot/bndries.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/bndries.png" src="_images/bndries.png" />
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="refine.html"
+                        title="previous chapter">Refining preexisting meshes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="voronoi.html"
+                        title="next chapter">Voronoi diagrams</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/convex.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="voronoi.html" title="Voronoi diagrams"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="refine.html" title="Refining preexisting meshes"
+             >previous</a> |</li>
+        <li><a href="index.html">triangle 2013.01.07 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Triangle Authors, Dzhelil Rufat.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
