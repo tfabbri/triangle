@@ -40,11 +40,11 @@ setup(name='triangle',
       url='http://dzhelil.info/triangle',
       setup_requires=[
           'setuptools>=18.0',
-          'Cython>=0.18'
+          'Cython>=0.23'
       ],
       install_requires=[
           'numpy>=1.7.0',
-          'Cython>=0.18'
+          'Cython>=0.23'
       ],
       ext_modules=[
           Extension('triangle.core',
